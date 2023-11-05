@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: gitops/manifests/operators/noobaa-operator/aggregate/minimal
+    path: gitops/manifests/operators/quay-operator/aggregate/minimal
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
     targetRevision: adding-quay
   syncPolicy:
