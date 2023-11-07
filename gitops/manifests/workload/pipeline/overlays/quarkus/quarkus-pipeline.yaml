@@ -117,27 +117,34 @@ spec:
           workspace: meat-helper-cicd-pvc
     - name: build-image
       params:
-        - name: SCRIPT
+        - name: IMAGE
+          value: 'image-registry.openshift-image-registry.svc:5000/demo-quarkus-pipeline/meat-helper:$(params.OUTPUT_TAG)'
+        - name: BUILDER_IMAGE
           value: >-
-            oc new-build --strategy=docker --binary=true --context-dir=src
-            --name meat-helper
-
-            mkdir image-build && cp -R src/target image-build && cp
-            src/src/main/docker/Dockerfile.jvm image-build/Dockerfile
-
-            oc start-build meat-helper --from-dir=image-build --follow
-
-            oc tag meat-helper:latest meat-helper:latest
-            meat-helper:$(params.OUTPUT_TAG)
-        - name: VERSION
-          value: latest
+            registry.redhat.io/rhel8/buildah@sha256:55f5c7d88c77e1ab5a2ab8e877172b2b66cb196e21f10dc45148470d0ee8bbae
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: DOCKERFILE
+          value: ./src/main/docker/Dockerfile.jvm
+        - name: CONTEXT
+          value: .
+        - name: TLSVERIFY
+          value: 'true'
+        - name: FORMAT
+          value: oci
+        - name: BUILD_EXTRA_ARGS
+          value: ''
+        - name: PUSH_EXTRA_ARGS
+          value: ''
+        - name: SKIP_PUSH
+          value: 'false'
       runAfter:
         - push-build-artifact
       taskRef:
         kind: ClusterTask
-        name: openshift-client
+        name: buildah
       workspaces:
-        - name: manifest-dir
+        - name: source
           workspace: meat-helper-cicd-pvc
     - name: acs-image-scan
       params:
