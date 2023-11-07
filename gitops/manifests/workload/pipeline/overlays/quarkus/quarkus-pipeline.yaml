@@ -127,7 +127,7 @@ spec:
         - name: DOCKERFILE
           value: ./src/src/main/docker/Dockerfile.jvm
         - name: CONTEXT
-          value: .
+          value: ./src
         - name: TLSVERIFY
           value: 'true'
         - name: FORMAT
