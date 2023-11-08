@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pipeline
+  namespace: demo-quarkus-pipeline
+imagePullSecrets:
+- name: quay-registry
+secrets:
+- name: quay-registry
