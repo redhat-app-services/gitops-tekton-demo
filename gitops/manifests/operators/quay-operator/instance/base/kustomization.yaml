@@ -9,4 +9,5 @@ commonAnnotations:
 
 resources:
   - namespace.yaml
+  - init-config-bundle-secret.yaml
   - quay-registry.yaml
