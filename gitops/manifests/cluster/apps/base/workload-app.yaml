@@ -13,6 +13,12 @@ spec:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: default
+  ignoreDifferences:
+    - group: ""
+      kind: ServiceAccount
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/instance: workload
   source:
     path: gitops/manifests/workload/pipeline/overlays/quarkus
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
