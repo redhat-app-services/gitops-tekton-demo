@@ -2,8 +2,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "1"   
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     run: quay-wait-job
@@ -49,7 +47,7 @@ spec:
               QUAY_PASSWD="password"
               QUAY_EMAIL="admin@example.com"
 
-              curl -X POST -k  https://$QUAY_ENDPOINT/api/v1/user/initialize --header 'Content-Type: application/json' --data '{ "username": "$QUAY_USER", "password":"$QUAY_PASSWD", "email": "$QUAY_EMAIL", "access_token": true}'
+              curl -X POST -k  $QUAY_ENDPOINT/api/v1/user/initialize --header 'Content-Type: application/json' --data '{ "username": "$QUAY_USER", "password":"$QUAY_PASSWD", "email": "$QUAY_EMAIL", "access_token": true}'
               echo "Password set succesfully for admin user"
 
           imagePullPolicy: IfNotPresent
