@@ -9,8 +9,6 @@ spec:
       params:
         - name: SCRIPT
           value: |-
-            oc delete bc meat-helper
-
             oc delete is meat-helper
 
             rm -rf image-build
