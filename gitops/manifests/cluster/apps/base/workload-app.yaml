@@ -17,8 +17,8 @@ spec:
     - group: ""
       kind: ServiceAccount
       jsonPointers:
-      - imagePullSecrets
-      - secrets
+      - /imagePullSecrets
+      - /secrets
   source:
     path: gitops/manifests/workload/pipeline/overlays/quarkus
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
