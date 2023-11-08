@@ -3,6 +3,8 @@ kind: ServiceAccount
 metadata:
   name: pipeline
   namespace: demo-quarkus-pipeline
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
 imagePullSecrets:
 - name: quay-registry
 secrets:
