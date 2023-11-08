@@ -16,9 +16,8 @@ spec:
   ignoreDifferences:
     - group: "argoproj.io"
       kind: ArgoCD
-      labelSelector:
-        matchLabels:
-          app.kubernetes.io/instance: advanced-cluster-security
+      jsonPointers:
+      -  /spec/resourceCustomizations
   source:
     path: gitops/manifests/operators/advanced-cluster-security-operator/aggregate/minimal
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
