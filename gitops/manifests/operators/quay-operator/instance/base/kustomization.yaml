@@ -10,6 +10,6 @@ commonAnnotations:
 resources:
   - namespace.yaml
   - init-config-bundle-secret.yaml
-  - argocd-rbac.yaml
+  - argocd-sa.yaml
   - set-init-user-passwd-job.yaml
   - quay-registry.yaml
