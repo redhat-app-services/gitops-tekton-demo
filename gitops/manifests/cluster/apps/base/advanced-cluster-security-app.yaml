@@ -5,6 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "4"
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Validate=false
   labels:
     gitops.ownedBy: default
 spec:
@@ -12,6 +13,12 @@ spec:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: default
+  ignoreDifferences:
+    - group: "argoproj.io"
+      kind: ArgoCD
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/instance: advanced-cluster-security
   source:
     path: gitops/manifests/operators/advanced-cluster-security-operator/aggregate/minimal
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
