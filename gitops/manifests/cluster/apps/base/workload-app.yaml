@@ -19,6 +19,10 @@ spec:
       jsonPointers:
       - /imagePullSecrets
       - /secrets
+    - group: ""
+      kind: PersistentVolumeClaim
+      jsonPointers:
+      - /status/phase
   source:
     path: gitops/manifests/workload/pipeline/overlays/quarkus
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
