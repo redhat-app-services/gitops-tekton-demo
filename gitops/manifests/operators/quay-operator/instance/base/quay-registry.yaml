@@ -1,8 +1,8 @@
 apiVersion: quay.redhat.com/v1
 kind: QuayRegistry
 metadata:
-  name: registry
-  namespace: quay
+  name: demo
+  namespace: registry
 spec:
   components:
     - managed: true

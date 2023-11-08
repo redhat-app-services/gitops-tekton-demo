@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   annotations:
     openshift.io/display-name: Red Hat Quay Registry
-  name: quay
+  name: registry
