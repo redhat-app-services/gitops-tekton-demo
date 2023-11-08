@@ -15,7 +15,7 @@ spec:
   source:
     path: gitops/manifests/operators/quay-operator/aggregate/minimal
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
-    targetRevision: adding-quay
+    targetRevision: main
   syncPolicy:
     automated:
       prune: false
