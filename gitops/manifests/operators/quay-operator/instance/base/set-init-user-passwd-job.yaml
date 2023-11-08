@@ -44,10 +44,10 @@ spec:
               echo "Setting password for initial admin user"
               QUAY_ENDPOINT=$(oc get quayregistry -A -o jsonpath='{.items[].status.registryEndpoint}')
               QUAY_USER="admin"
-              QUAY_PASSWD="password"
+              QUAY_PASSWD="openshift"
               QUAY_EMAIL="admin@example.com"
 
-              curl -X POST -k  $QUAY_ENDPOINT/api/v1/user/initialize --header 'Content-Type: application/json' --data '{ "username": "$QUAY_USER", "password":"$QUAY_PASSWD", "email": "$QUAY_EMAIL", "access_token": true}'
+              curl -X POST -k  $QUAY_ENDPOINT/api/v1/user/initialize --header "Content-Type: application/json" --data "{ \"username\": \"$QUAY_USER\", \"password\":\"$QUAY_PASSWD\", \"email\": \"$QUAY_EMAIL\", \"access_token\": true}"
               echo "Password set succesfully for admin user"
 
           imagePullPolicy: IfNotPresent
