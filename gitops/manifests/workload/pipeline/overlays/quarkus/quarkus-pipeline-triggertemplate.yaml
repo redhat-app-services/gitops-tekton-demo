@@ -24,7 +24,7 @@ spec:
           - name: GIT_BRANCH
             value: $(tt.params.git-revision)
           - name: OUTPUT_IMAGE
-            value: quay.io/stauil/quarkus-meat-helper
+            value: demo-quay-app.registry.svc.cluster.local/admin/meat-helper
           - name: OUTPUT_TAG
             value: demo
         pipelineRef:

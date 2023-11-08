@@ -7,6 +7,7 @@ commonAnnotations:
   
 resources:
   - ../../base
+  - quay-registry-secret.yaml
   - acs-image-check.yaml
   - acs-image-scan.yaml
   - quarkus-pipeline.yaml
@@ -15,3 +16,4 @@ resources:
   - quarkus-pipeline-event-listener.yaml
   - quarkus-pipeline-webhook-route.yaml
   - source-workspace.yaml
+  - pipeline-sa.yaml

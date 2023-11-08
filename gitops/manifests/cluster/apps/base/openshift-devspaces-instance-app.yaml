@@ -14,7 +14,7 @@ spec:
   project: default
   source:
     path: gitops/manifests/operators/openshift-devspaces-operator/instance/base
-    repoURL: https://github.com/sa-ne/gitops-tekton-demo.git
+    repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
     targetRevision: main
   syncPolicy:
     automated:

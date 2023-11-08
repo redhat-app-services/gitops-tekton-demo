@@ -5,6 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "10"
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Validate=false
   labels:
     gitops.ownedBy: default
 spec:
@@ -14,7 +15,7 @@ spec:
   project: default
   source:
     path: gitops/manifests/workload/pipeline/overlays/quarkus
-    repoURL: https://github.com/sa-ne/gitops-tekton-demo.git
+    repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
     targetRevision: main
   syncPolicy:
     automated:
