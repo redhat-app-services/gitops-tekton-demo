@@ -23,7 +23,7 @@ spec:
       containers:
         - name: meat-helper
           image: >-
-            image-registry.openshift-image-registry.svc:5000/emo-quarkus-pipeline/meat-helper:demo
+            image-registry.openshift-image-registry.svc:5000/demo-quarkus-pipeline/meat-helper:demo
           ports:
             - containerPort: 8080
               protocol: TCP
