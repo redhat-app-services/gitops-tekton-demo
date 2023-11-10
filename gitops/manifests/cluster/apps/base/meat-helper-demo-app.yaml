@@ -12,12 +12,6 @@ spec:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: default
-  ignoreDifferences:
-  - group: ""
-    kind: ServiceAccount
-    jsonPointers:
-    - /imagePullSecrets
-    - /secrets
   source:
     path: gitops/manifests/workload/application/overlays/default
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
