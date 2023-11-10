@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: gitops/manifests/operators/openshift-pipelines-operator/overlays/pipelines-1.12
+    path: gitops/manifests/operators/openshift-pipelines-operator/overlays/pipelines-1.11
     repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
     targetRevision: main
   syncPolicy:
