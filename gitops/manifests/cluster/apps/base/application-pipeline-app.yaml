@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: workload
+  name: application-pipeline
   annotations:
     argocd.argoproj.io/sync-wave: "10"
     argocd.argoproj.io/compare-options: IgnoreExtraneous
