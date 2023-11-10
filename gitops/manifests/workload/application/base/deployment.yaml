@@ -1,0 +1,48 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: meat-helper
+  namespace: demo-quarkus-pipeline
+  labels:
+    app: meat-helper
+    app.kubernetes.io/component: meat-helper
+    app.kubernetes.io/instance: meat-helper
+    app.kubernetes.io/name: meat-helper
+    app.kubernetes.io/part-of: meat-helper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: meat-helper
+  template:
+    metadata:
+      labels:
+        app: meat-helper
+        deployment: meat-helper
+    spec:
+      containers:
+        - name: meat-helper
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/emo-quarkus-pipeline/meat-helper:demo
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      serviceAccountName: pipeline
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

@@ -1,0 +1,22 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: meat-helper
+  namespace: demo-quarkus-pipeline
+  labels:
+    app: meat-helper
+    app.kubernetes.io/component: meat-helper
+    app.kubernetes.io/instance: meat-helper
+    app.kubernetes.io/name: meat-helper
+    app.kubernetes.io/part-of: meat-helper
+spec:
+  to:
+    kind: Service
+    name: meat-helper
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

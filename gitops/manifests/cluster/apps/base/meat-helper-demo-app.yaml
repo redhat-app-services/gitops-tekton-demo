@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: meat-helper
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    gitops.ownedBy: default
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: default
+  ignoreDifferences:
+  - group: ""
+    kind: ServiceAccount
+    jsonPointers:
+    - /imagePullSecrets
+    - /secrets
+  source:
+    path: gitops/manifests/workload/application/overlays/default
+    repoURL: https://github.com/redhat-app-services/gitops-tekton-demo.git
+    targetRevision: main
+  syncPolicy: {}

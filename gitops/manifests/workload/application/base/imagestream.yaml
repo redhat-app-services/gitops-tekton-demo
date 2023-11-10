@@ -1,0 +1,26 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: meat-helper
+  namespace: demo-quarkus-pipeline
+  labels:
+    app: meat-helper
+    app.kubernetes.io/component: meat-helper
+    app.kubernetes.io/instance: meat-helper
+    app.kubernetes.io/name: meat-helper
+    app.kubernetes.io/part-of: meat-helper
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: demo
+      annotations:
+        openshift.io/imported-from: 'demo-quay-app.registry.svc.cluster.local/admin/meat-helper:demo'
+      from:
+        kind: DockerImage
+        name: 'demo-quay-app.registry.svc.cluster.local/admin/meat-helper:demo'
+      importPolicy:
+        insecure: true
+        importMode: Legacy
+      referencePolicy:
+        type: Local

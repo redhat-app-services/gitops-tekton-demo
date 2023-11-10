@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: meat-helper
+  namespace: demo-quarkus-pipeline
+  labels:
+    app: meat-helper
+    app.kubernetes.io/component: meat-helper
+    app.kubernetes.io/instance: meat-helper
+    app.kubernetes.io/name: meat-helper
+    app.kubernetes.io/part-of: meat-helper
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: 8443-tcp
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: meat-helper
+    deployment: meat-helper
+status:
+  loadBalancer: {}
