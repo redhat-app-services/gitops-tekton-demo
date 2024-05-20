@@ -24,3 +24,11 @@ For this to work you have to configure the webhook in the git repository, you ca
 ```
 oc get route quarkus-pipeline-event-listener -n demo-quarkus-pipeline -o jsonpath='{.spec.host}'
 ```
+
+During the provisioning a user account is created in the Quay instance with default user name `admin` and password `openshift`. This is used by the pipeline (linked to a service account), to push the cointainer image to Quay.
+
+| :warning: WARNING           |
+|:----------------------------|
+| Make sure the repository `meat-helper` under `admin` user on Quay is configured with *public* visibility.     |
+
+
